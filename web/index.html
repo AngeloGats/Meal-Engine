@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6f4">
+    <title>Meal Plan Guideline Checker</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./engine.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <a class="wordmark" href="./index.html">Meal plan checker</a>
+        <span class="source-label">Based on the 2012 NNG for Filipinos</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">DIETARY GUIDELINE SCREEN</p>
+        <h1 id="page-title">Check a meal plan</h1>
+        <p>Add the foods for each day, tag their food groups, then run the checks.</p>
+      </section>
+
+      <form id="meal-plan-form">
+        <section class="profile panel" aria-labelledby="profile-title">
+          <div class="panel-heading">
+            <div>
+              <h2 id="profile-title">Infant feeding <span class="optional">optional</span></h2>
+              <p>Complete only when planning for a child under 2 years.</p>
+            </div>
+          </div>
+          <div class="profile-fields">
+            <label class="field">Age in months
+              <input id="infant-age" type="number" min="0" max="23" step="1" placeholder="Leave blank if not applicable">
+            </label>
+            <label class="field">Exclusive breastfeeding <span>under 6 months</span>
+              <select id="exclusive-breastfeeding">
+                <option value="unknown">Not assessed</option><option value="yes">Yes</option><option value="no">No</option>
+              </select>
+            </label>
+            <label class="field">Complementary foods <span>from 6 months</span>
+              <select id="complementary-foods">
+                <option value="unknown">Not assessed</option><option value="yes">Yes</option><option value="no">No</option>
+              </select>
+            </label>
+            <label class="field">Breastfeeding continues
+              <select id="breastfeeding-continues">
+                <option value="unknown">Not assessed</option><option value="yes">Yes</option><option value="no">No</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="plan-section" aria-labelledby="days-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">MEAL PLAN</p>
+              <h2 id="days-title">Days</h2>
+            </div>
+            <button id="add-day" class="button button-secondary" type="button">+ Add day</button>
+          </div>
+          <div id="days" class="days-list"></div>
+        </section>
+
+        <div class="form-footer">
+          <p>Food-group tags and safety confirmations are self-reported.</p>
+          <button id="evaluate" class="button button-primary" type="submit">Run guideline checks</button>
+        </div>
+        <p id="form-error" class="error" role="alert" hidden></p>
+      </form>
+
+      <section id="results" class="results panel" aria-labelledby="results-title" aria-live="polite" hidden>
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow">SCREENING RESULTS</p>
+            <h2 id="results-title">Meal plan checks</h2>
+          </div>
+          <span id="result-status" class="result-badge"></span>
+        </div>
+        <p id="result-summary" class="result-summary"></p>
+        <div id="plan-checks" class="check-list"></div>
+        <div id="day-results"></div>
+        <p id="disclaimer" class="disclaimer"></p>
+      </section>
+
+      <details class="guidelines panel">
+        <summary>Show the ten 2012 nutrition guidelines</summary>
+        <ol id="guideline-list"></ol>
+        <p class="guideline-source">Source: NNC Governing Board Resolution No. 6, Series of 2012, “Adoption of the 2012 Nutritional Guidelines for Filipinos.”</p>
+      </details>
+      <footer>Screening aid only. Not a formal compliance certification or medical advice.</footer>
+    </main>
+  </body>
+</html>
